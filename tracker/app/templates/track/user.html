@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="candidateinfo">
+	<div class="candidateprofilepicwrapper">
+		<img src="{% static 'img/patcher.png' %}" class="candidateprofilepic" />
+	</div>
+	<div class="candidateprofile"> 
+		<div class="candidateabout"> 
+			<div class="grey-text">Name:</div>
+			<div>&nbsp;{{ candidate.name }}</div>
+		</div>
+		<div class="candidateabout"> 
+			<div class="grey-text">Email:</div>
+			<div>&nbsp; {{ candidate.email }}</div>
+		</div>
+		<div class="candidateabout"> 
+			<div class="grey-text">Age:</div>
+			<div>&nbsp; {{ candidate.age }}</div>
+		</div>
+		<div class="candidateabout"> 
+			<div class="grey-text">Gender:</div>
+			<div>&nbsp; {{ candidate.gender }}</div>
+		</div>
+		<div class="candidateabout"> 
+			<div class="grey-text">contact:</div>
+			<div>&nbsp; +91{{ candidate.phone_number }}</div>
+		</div>
+		<div class="candidatestatus {% if candidate.status == 'REJECTED' %} red-text {% elif candidate.status == 'PENDING' %} grey-text {% else %} blue-text {% endif %}">
+			{{ candidate.status }}
+		</div>
+		<div class="candidateprofileactions" >
+			<i
+				class="material-icons candidateprofileaction waves-effect waves-light blue-text text-lighten-2"
+				onClick="updateModal('{{ candidate|safe|escapejs  }}')"
+			>
+				edit
+			</i>
+			<i 
+				class="material-icons candidateprofileaction waves-effect waves-light red-text text-lighten-2"
+				onClick="handleDeleteUser('{{ candidate.id }}')"
+			>
+				delete
+			</i>
+		</div>
+	</div>
+</div>
+{% endblock %}

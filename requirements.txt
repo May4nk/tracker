@@ -1,0 +1,4 @@
+djangorestframework
+psycopg
+psycopg[binary]
+requests

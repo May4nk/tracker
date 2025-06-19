@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %}
+
+<div class="applications">
+	{% for candidate in candidates %}
+		<a class="application hoverable" href="{% url 'candidate_page' candidate.id %}">
+			<div class="applicationpicwrapper">
+				<img src="{% static 'img/patcher.png'%}" class="applicationpic" />
+			</div>
+			<div class="applicationprofile">
+				<div class="candidatename">{{ candidate.name }}</div>
+				<div class="candidatedata">
+					<div class="candidateage">Age: {{ candidate.age }}</div>
+					<div class="candidatenumber">+91{{ candidate.phone_number }}</div>
+				</div>
+			</div>
+		</a>
+		{% endfor %}
+</div>
+
+{% endblock %}
